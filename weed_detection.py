@@ -1,8 +1,3 @@
-'''
-Python 3.6.4
-OpenCV 3.4.0
-Numpy 1.14.0
-'''
 import cv2
 import sys
 import numpy as np 
@@ -87,13 +82,20 @@ class WeedDetection:
 
         #write text in each partition
         for i in range(3):
-            cv2.putText(img, str(percentage[i]), (int(part_width*(i + 0.34)), self.height//2), font, 1, (0,0,255), 3, cv2.LINE_AA)
+            cv2.putText(img, str(percentage[i]) + "%", (int(part_width*(i + 0.34)), self.height//2), font, 1, (0,0,255), 3, cv2.LINE_AA)
 
         return img
 
 def main():
     #Read image from CLI
-    img_path = sys.argv[1]
+
+    cli_args = sys.argv[1:]
+
+    if len(cli_args) != 1:
+        print("Usage: python weed_detection.py image_path")
+        sys.exit(1)
+
+    img_path = cli_args[0]
     img = cv2.imread(img_path)
     print(img.shape)
     img_resize = cv2.resize(img, (800,500))

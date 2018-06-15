@@ -1,13 +1,17 @@
-'''
-Python 3.6.4
-OpenCV 3.4.0
-Numpy 1.14.0
-'''
 import cv2
+import sys
 import numpy as np 
 import weed_detection as weed
 
-cap = cv2.VideoCapture('input_video.mp4')
+cli_args = sys.argv[1:]
+
+if len(cli_args) != 1:
+    print("Usage: python video_feed.py video_path")
+    sys.exit(1)
+
+video_path = cli_args[0]
+
+cap = cv2.VideoCapture(video_path)
 
 _, first_frame = cap.read() 
 
