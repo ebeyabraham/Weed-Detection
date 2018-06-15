@@ -1,2 +1,2 @@
 # Weed-Detection
-Detect water weeds in a video feed and find the percentage. Designed for an autonomous bot to remove water weeds
+Detects the water weed percentage in a video feed and then it can be used to determine the direction in which the autonomous bot has to move.
